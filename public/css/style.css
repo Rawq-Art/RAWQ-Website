@@ -465,6 +465,51 @@ html[lang="en"] .house__line { line-height: 1.5; }
   color: var(--stone);
 }
 
+/* ---------- Legal / policy pages ---------- */
+.legal { padding-top: clamp(56px, 8vh, 88px); }
+
+.legal .section__inner { max-width: 720px; }
+
+.legal__updated {
+  font-size: 0.8125rem;
+  color: var(--stone);
+  margin-top: -24px;
+  margin-bottom: clamp(40px, 6vh, 56px);
+}
+
+.legal h2 {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin: 2.4em 0 0.7em;
+  color: var(--char);
+}
+
+.legal p,
+.legal li {
+  font-weight: 300;
+  color: var(--olive);
+  margin-bottom: 1em;
+}
+
+.legal ul {
+  padding-inline-start: 1.3em;
+  margin-bottom: 1em;
+}
+
+.legal li { margin-bottom: 0.4em; }
+
+.footer__links {
+  font-size: 0.8125rem;
+  color: var(--ivory);
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.footer__links a { transition: color .25s ease; }
+.footer__links a:hover { color: var(--terra); }
+
 /* ---------- Reveal on scroll ----------
    يُخفى العنصر فقط عندما يعلن JS جاهزيته (html.reveal-ready) —
    بلا JS يبقى المحتوى ظاهرًا كاملًا. */

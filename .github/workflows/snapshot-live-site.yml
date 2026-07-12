@@ -17,35 +17,27 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Mirror rawq.art
+      - name: Fetch assets not captured by the HTML mirror
         run: |
-          rm -rf live-site-snapshot
-          mkdir -p live-site-snapshot
-          cd live-site-snapshot
-          wget \
-            --recursive \
-            --level=5 \
-            --page-requisites \
-            --adjust-extension \
-            --no-parent \
-            --no-host-directories \
-            --restrict-file-names=unix \
-            --timeout=30 \
-            --tries=2 \
-            -e robots=off \
-            --user-agent="Mozilla/5.0 (compatible; site-backup)" \
-            https://rawq.art/ || true
-          echo "--- files retrieved ---"
-          find . -type f | sort
+          fetched=0
+          for asset in og.png; do
+            if curl -fsSL --max-time 30 "https://rawq.art/assets/${asset}" -o "public/assets/${asset}"; then
+              echo "fetched ${asset}"
+              fetched=1
+            else
+              echo "${asset} not present on the live site; skipping"
+              rm -f "public/assets/${asset}"
+            fi
+          done
 
-      - name: Commit snapshot to this branch
+      - name: Commit fetched assets to this branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -f live-site-snapshot
+          git add -f public/assets
           if git diff --cached --quiet; then
-            echo "Nothing was downloaded; skipping commit."
+            echo "Nothing new to commit."
           else
-            git commit -m "Add snapshot of live rawq.art site"
+            git commit -m "Add live-site assets fetched by snapshot workflow"
             git push origin HEAD:claude/terms-conditions-policy-pages-x8ll3t
           fi
