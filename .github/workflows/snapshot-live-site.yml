@@ -1,0 +1,51 @@
+name: Snapshot live site
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - claude/terms-conditions-policy-pages-x8ll3t
+    paths:
+      - ".github/workflows/snapshot-live-site.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Mirror rawq.art
+        run: |
+          rm -rf live-site-snapshot
+          mkdir -p live-site-snapshot
+          cd live-site-snapshot
+          wget \
+            --recursive \
+            --level=5 \
+            --page-requisites \
+            --adjust-extension \
+            --no-parent \
+            --no-host-directories \
+            --restrict-file-names=unix \
+            --timeout=30 \
+            --tries=2 \
+            -e robots=off \
+            --user-agent="Mozilla/5.0 (compatible; site-backup)" \
+            https://rawq.art/ || true
+          echo "--- files retrieved ---"
+          find . -type f | sort
+
+      - name: Commit snapshot to this branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f live-site-snapshot
+          if git diff --cached --quiet; then
+            echo "Nothing was downloaded; skipping commit."
+          else
+            git commit -m "Add snapshot of live rawq.art site"
+            git push origin HEAD:claude/terms-conditions-policy-pages-x8ll3t
+          fi
