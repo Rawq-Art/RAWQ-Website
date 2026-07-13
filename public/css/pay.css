@@ -1,0 +1,82 @@
+/* ============================================================
+   رَوْق — صفحة التسوية
+   ============================================================ */
+
+.pay-body {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: clamp(24px, 5vh, 64px) 24px;
+}
+
+.pay {
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+}
+
+.pay__mark { display: inline-block; margin-bottom: clamp(24px, 4vh, 40px); }
+.pay__mark img { width: 52px; height: 52px; }
+
+.pay__title {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 3vw, 1.875rem);
+}
+
+.pay__sub {
+  font-family: var(--font-latin-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--stone);
+  margin-top: 6px;
+  margin-bottom: clamp(32px, 5vh, 44px);
+}
+
+.pay__summary {
+  border-top: 1px solid rgba(161, 89, 50, 0.35);
+  border-bottom: 1px solid rgba(161, 89, 50, 0.35);
+  padding: 22px 4px;
+  margin-bottom: clamp(28px, 4vh, 36px);
+}
+
+.pay__summary dl { display: grid; gap: 12px; }
+.pay__summary div { display: flex; justify-content: space-between; align-items: baseline; }
+.pay__summary dt { font-size: 0.875rem; color: var(--olive); font-weight: 400; }
+.pay__summary dd { font-weight: 500; }
+.pay__summary #sAmount { font-size: 1.375rem; }
+.pay__currency { font-size: 0.8125rem; color: var(--olive); font-weight: 300; }
+
+.pay__notice {
+  padding: 28px 8px;
+  border-top: 1px solid rgba(46, 45, 41, 0.12);
+  border-bottom: 1px solid rgba(46, 45, 41, 0.12);
+  margin-bottom: 28px;
+}
+.pay__notice p { color: var(--olive); font-weight: 300; margin-bottom: 14px; }
+.pay__notice.is-paid { border-color: rgba(161, 89, 50, 0.4); }
+.pay__notice.is-paid p { color: var(--char); font-family: var(--font-head); font-size: 1.125rem; font-weight: 500; }
+.pay__contact { color: var(--terra); font-family: var(--font-latin-body); font-size: 0.9375rem; }
+.pay__contact:hover { color: var(--terra-deep); }
+
+.pay__assurance {
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: var(--stone);
+  max-width: 40ch;
+  margin: 0 auto clamp(28px, 4vh, 40px);
+  line-height: 1.9;
+}
+
+.pay__footer {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  font-size: 0.8125rem;
+  color: var(--stone);
+}
+.pay__footer a { color: var(--olive); }
+.pay__footer a:hover { color: var(--terra); }
+
+/* نموذج Moyasar — مواءمة مع الهوية */
+.mysr-form { margin-bottom: 28px; }
