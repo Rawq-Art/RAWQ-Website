@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>التسوية — رَوْق</title>
+  <meta name="description" content="صفحة تسوية الدفعات — رَوْق، دار تنسيق العيش.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <meta name="theme-color" content="#FFF8F1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;600;700&family=Tajawal:wght@300;400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pay.css">
+</head>
+<body class="pay-body">
+
+  <main class="pay">
+    <a class="pay__mark" href="/" aria-label="رَوْق RAWQ">
+      <img src="assets/favicon.svg" alt="" width="52" height="52">
+    </a>
+
+    <h1 class="pay__title">تسوية دفعة</h1>
+    <p class="pay__sub">Settlement — RAWQ, The House of Curated Living</p>
+
+    <!-- ملخص الدفعة (يُملأ من الرابط) -->
+    <section class="pay__summary" id="paySummary" hidden>
+      <dl>
+        <div><dt>البيان</dt><dd id="sType">—</dd></div>
+        <div><dt>المرجع</dt><dd id="sRef" class="num">—</dd></div>
+        <div><dt>المبلغ</dt><dd><span id="sAmount" class="num">—</span> <span class="pay__currency">ريال سعودي</span></dd></div>
+      </dl>
+    </section>
+
+    <!-- نموذج الدفع المستضاف -->
+    <div class="mysr-form" id="payForm" hidden></div>
+
+    <!-- حالات بديلة -->
+    <section class="pay__notice" id="payNotice" hidden>
+      <p id="noticeText"></p>
+      <a class="pay__contact" href="mailto:dar@rawq.art">dar@rawq.art</a>
+    </section>
+
+    <p class="pay__assurance">تُعالج البطاقات لدى مزوّد دفع معتمد من البنك المركزي السعودي — لا تمرّ بياناتها بموقع الدار ولا تُحفظ لديه.</p>
+
+    <footer class="pay__footer">
+      <span class="num">السجل التجاري 7054427997</span>
+      <span aria-hidden="true">·</span>
+      <a href="/">rawq.art</a>
+    </footer>
+  </main>
+
+  <script src="js/pay.js"></script>
+</body>
+</html>
