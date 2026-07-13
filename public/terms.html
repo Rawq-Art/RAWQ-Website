@@ -7,7 +7,7 @@
   <meta name="description" content="الشروط والأحكام لموقع رَوْق — دار تنسيق العيش.">
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="canonical" href="https://rawq.art/terms.html">
+  <link rel="canonical" href="https://rawq.art/terms">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,18 +15,18 @@
 
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="terms">
 
   <a class="skip-link" href="#main" data-i18n="skip">تجاوز إلى المحتوى</a>
 
   <header class="nav" id="top">
     <div class="nav__inner">
-      <a class="nav__mark" href="index.html" aria-label="رَوْق RAWQ">
+      <a class="nav__mark" href="/" aria-label="رَوْق RAWQ">
         <img src="assets/favicon.svg" alt="" width="34" height="34">
       </a>
       <nav class="nav__links" aria-label="التنقّل">
-        <a href="index.html" data-i18n="nav_home">الرئيسية</a>
-        <a href="index.html#request" class="nav__cta" data-i18n="nav_request">اطلب النظر</a>
+        <a href="/" data-i18n="nav_home">الرئيسية</a>
+        <a href="/#request" class="nav__cta" data-i18n="nav_request">اطلب النظر</a>
       </nav>
       <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">EN</button>
     </div>
@@ -135,74 +135,14 @@
         <a href="https://www.instagram.com/rawq.art" target="_blank" rel="noopener" data-i18n="footer_ig">انستقرام</a>
       </div>
       <p class="footer__links">
-        <a href="terms.html" data-i18n="footer_terms">الشروط والأحكام</a>
+        <a href="/terms" data-i18n="footer_terms">الشروط والأحكام</a>
         <span class="footer__sep" aria-hidden="true">·</span>
-        <a href="internal-policy.html" data-i18n="footer_policy">سياسة الدار</a>
+        <a href="/internal-policy" data-i18n="footer_policy">سياسة الدار</a>
       </p>
       <p class="footer__line"><span class="num">© <span id="year">2026</span></span> <span data-i18n="footer_line">رَوْق — دار تنسيق العيش</span></p>
     </div>
   </footer>
 
-  <script>
-  (function () {
-    const T = {
-      ar: {
-        _title: "الشروط والأحكام — رَوْق",
-        skip: "تجاوز إلى المحتوى",
-        nav_home: "الرئيسية",
-        nav_request: "اطلب النظر",
-        footer_cr: "السجل التجاري",
-        footer_ig: "انستقرام",
-        footer_terms: "الشروط والأحكام",
-        footer_policy: "سياسة الدار",
-        footer_line: "رَوْق — دار تنسيق العيش",
-      },
-      en: {
-        _title: "Terms & Conditions — RAWQ",
-        skip: "Skip to content",
-        nav_home: "Home",
-        nav_request: "Request",
-        footer_cr: "Commercial Registration",
-        footer_ig: "Instagram",
-        footer_terms: "Terms & Conditions",
-        footer_policy: "House Policy",
-        footer_line: "RAWQ — The House of Curated Living",
-      },
-    };
-
-    let lang = (() => {
-      const q = new URLSearchParams(location.search).get("lang");
-      if (q === "en" || q === "ar") return q;
-      return localStorage.getItem("rawq-lang") === "en" ? "en" : "ar";
-    })();
-
-    const toggle = document.getElementById("langToggle");
-
-    function apply() {
-      const dict = T[lang];
-      document.documentElement.lang = lang;
-      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-      document.title = dict._title;
-      document.querySelectorAll("[data-i18n]").forEach((el) => {
-        const key = el.getAttribute("data-i18n");
-        if (dict[key] !== undefined) el.textContent = dict[key];
-      });
-      document.querySelectorAll("[data-lang-block]").forEach((el) => {
-        el.hidden = el.getAttribute("data-lang-block") !== lang;
-      });
-      toggle.textContent = lang === "ar" ? "EN" : "عربي";
-      toggle.setAttribute("aria-label", lang === "ar" ? "Switch to English" : "التبديل إلى العربية");
-      localStorage.setItem("rawq-lang", lang);
-    }
-
-    toggle.addEventListener("click", () => {
-      lang = lang === "ar" ? "en" : "ar";
-      apply();
-    });
-
-    document.getElementById("year").textContent = new Date().getFullYear();
-    apply();
-  })();
-  </script>
+  <script src="js/legal.js"></script>
 </body>
 </html>
