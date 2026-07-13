@@ -9,6 +9,7 @@
   const TITLES = {
     terms: { ar: "الشروط والأحكام — رَوْق", en: "Terms & Conditions — RAWQ" },
     policy: { ar: "سياسة الدار — رَوْق", en: "House Policy — RAWQ" },
+    refund: { ar: "سياسة الاستبدال والاسترجاع — رَوْق", en: "Exchange & Refund Policy — RAWQ" },
   };
 
   const T = {
@@ -19,6 +20,7 @@
       footer_cr: "السجل التجاري",
       footer_ig: "انستقرام",
       footer_terms: "الشروط والأحكام",
+      footer_refund: "سياسة الاسترجاع",
       footer_policy: "سياسة الدار",
       footer_line: "رَوْق — دار تنسيق العيش",
     },
@@ -29,6 +31,7 @@
       footer_cr: "Commercial Registration",
       footer_ig: "Instagram",
       footer_terms: "Terms & Conditions",
+      footer_refund: "Refund Policy",
       footer_policy: "House Policy",
       footer_line: "RAWQ — The House of Curated Living",
     },
