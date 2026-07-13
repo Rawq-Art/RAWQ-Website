@@ -1,0 +1,56 @@
+name: Snapshot live site
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - claude/terms-conditions-policy-pages-x8ll3t
+    paths:
+      - ".github/workflows/snapshot-live-site.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Mirror pay.html and everything it references
+        run: |
+          mkdir -p mirror
+          cd mirror
+          wget \
+            --recursive \
+            --level=3 \
+            --page-requisites \
+            --adjust-extension \
+            --no-parent \
+            --no-host-directories \
+            --restrict-file-names=unix \
+            --timeout=30 \
+            --tries=2 \
+            -e robots=off \
+            --user-agent="Mozilla/5.0 (compatible; site-backup)" \
+            https://rawq.art/pay.html || true
+          echo "--- files retrieved ---"
+          find . -type f | sort
+
+      - name: Copy new files into public/ without overwriting existing ones
+        run: |
+          rsync -av --ignore-existing --exclude='*?*' mirror/ public/
+          echo "--- public/ now contains ---"
+          find public -type f | sort
+
+      - name: Commit to this branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f public
+          if git diff --cached --quiet; then
+            echo "Nothing new to commit."
+          else
+            git commit -m "Add pay.html and its assets recovered from the live site"
+            git push origin HEAD:claude/terms-conditions-policy-pages-x8ll3t
+          fi
