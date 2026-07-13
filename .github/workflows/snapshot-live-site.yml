@@ -39,7 +39,8 @@ jobs:
 
       - name: Copy new files into public/ without overwriting existing ones
         run: |
-          rsync -av --ignore-existing --exclude='*?*' mirror/ public/
+          find mirror -name '*[?]*' -delete
+          rsync -av --ignore-existing mirror/ public/
           echo "--- public/ now contains ---"
           find public -type f | sort
 
