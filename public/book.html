@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رَوْق — حجز استشارة</title>
+  <meta name="description" content="احجز استشارة تصميمية مع رَوْق — دار تنسيق العيش.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <meta name="theme-color" content="#FFF8F1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;600;700&family=Tajawal:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/book.css">
+</head>
+<body class="book-body">
+
+  <header class="nav" id="top">
+    <div class="nav__inner">
+      <a class="nav__mark" href="/" aria-label="رَوْق RAWQ">
+        <img src="assets/favicon.svg" alt="" width="34" height="34">
+      </a>
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language" style="margin-inline-start:auto">EN</button>
+    </div>
+  </header>
+
+  <main class="book">
+    <div class="book__head">
+      <h1 class="book__title" data-i18n="title">حجز استشارة</h1>
+      <p class="book__sub" data-i18n="sub">اختر الجلسة، ثم الموعد الذي يناسبك.</p>
+    </div>
+
+    <!-- 1 · نوع الاستشارة -->
+    <section class="step">
+      <h2 class="step__label"><span class="step__n num">1</span> <span data-i18n="step_type">الاستشارة</span></h2>
+      <div class="consult-list" id="consultList"><!-- من CONSULTATIONS --></div>
+    </section>
+
+    <!-- 2 · الموعد -->
+    <section class="step" id="stepTime" hidden>
+      <h2 class="step__label"><span class="step__n num">2</span> <span data-i18n="step_time">الموعد</span></h2>
+      <div class="slots" id="slots"></div>
+    </section>
+
+    <!-- 3 · البيانات + الدفع -->
+    <section class="step" id="stepDetails" hidden>
+      <h2 class="step__label"><span class="step__n num">3</span> <span data-i18n="step_details">بياناتك</span></h2>
+      <form class="book-form" id="bookForm" novalidate>
+        <div class="book-field">
+          <label for="b-name" data-i18n="f_name">الاسم</label>
+          <input id="b-name" name="name" type="text" required autocomplete="name">
+        </div>
+        <div class="book-field">
+          <label for="b-contact" data-i18n="f_contact">وسيلة التواصل — جوال أو بريد</label>
+          <input id="b-contact" name="contact" type="text" required autocomplete="tel">
+        </div>
+        <div class="book-field">
+          <label for="b-note" data-i18n="f_note">نبذة عمّا يشغلك (اختياري)</label>
+          <textarea id="b-note" name="note" rows="3"></textarea>
+        </div>
+        <button class="btn btn--wide" type="submit" data-i18n="cta">المتابعة إلى الدفع</button>
+      </form>
+      <p class="book__assurance" data-i18n="assurance">يُعالَج الدفع لدى مزوّد معتمد من البنك المركزي السعودي — لا تمرّ بيانات بطاقتك بموقع الدار.</p>
+    </section>
+  </main>
+
+  <footer class="book-footer">
+    <span class="num"><span data-i18n="footer_cr">السجل التجاري</span> 7054427997</span>
+    <span aria-hidden="true">·</span>
+    <a href="/">rawq.art</a>
+  </footer>
+
+  <script src="js/book.js"></script>
+</body>
+</html>

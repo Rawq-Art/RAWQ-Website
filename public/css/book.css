@@ -1,0 +1,127 @@
+/* ============================================================
+   رَوْق — صفحة حجز الاستشارات
+   ============================================================ */
+
+.book { max-width: 720px; margin-inline: auto; padding: clamp(40px, 8vh, 88px) 24px clamp(64px, 10vh, 112px); }
+
+.book__head { text-align: center; margin-bottom: clamp(40px, 6vh, 64px); }
+.book__title {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: clamp(1.75rem, 4vw, 2.375rem);
+}
+.book__sub { margin-top: 12px; color: var(--olive); font-weight: 300; }
+
+/* ---------- Step ---------- */
+.step { margin-bottom: clamp(40px, 6vh, 64px); }
+.step[hidden] { display: none; }
+
+.step__label {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 1.1875rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid rgba(161, 89, 50, 0.3);
+}
+.step__n {
+  width: 28px; height: 28px;
+  display: grid; place-items: center;
+  border: 1px solid var(--terra);
+  border-radius: 50%;
+  color: var(--terra);
+  font-size: 0.875rem;
+}
+
+/* ---------- Consultation cards ---------- */
+.consult-list { display: grid; gap: 16px; }
+
+.consult {
+  text-align: start;
+  background: transparent;
+  border: 1px solid rgba(46, 45, 41, 0.16);
+  padding: 22px 24px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  color: var(--char);
+  display: grid;
+  gap: 10px;
+  transition: border-color .25s ease, background .25s ease;
+}
+.consult:hover { border-color: var(--terra); }
+.consult.is-selected { border-color: var(--terra); background: rgba(161, 89, 50, 0.05); }
+
+.consult__head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.consult__name { font-family: var(--font-head); font-weight: 600; font-size: 1.125rem; }
+.consult__dur { font-size: 0.8125rem; color: var(--stone); white-space: nowrap; }
+.consult__brief { font-size: 0.9375rem; font-weight: 300; color: var(--olive); line-height: 1.8; }
+.consult__fee {
+  font-size: 0.9375rem;
+  padding-top: 8px;
+  border-top: 1px solid rgba(46, 45, 41, 0.08);
+}
+.consult__fee-k { color: var(--stone); font-size: 0.8125rem; margin-inline-end: 6px; }
+.consult__cur { font-size: 0.75rem; color: var(--olive); }
+
+/* ---------- Slots ---------- */
+.slots { min-height: 60px; }
+.slots__soon {
+  color: var(--stone);
+  font-weight: 300;
+  padding: 22px 24px;
+  border: 1px dashed rgba(46, 45, 41, 0.2);
+  text-align: center;
+}
+.slot {
+  display: inline-block;
+  border: 1px solid rgba(46, 45, 41, 0.2);
+  padding: 10px 18px;
+  margin: 0 8px 8px 0;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font-latin-body);
+  transition: border-color .2s ease, background .2s ease;
+}
+.slot:hover, .slot.is-selected { border-color: var(--terra); background: rgba(161, 89, 50, 0.06); }
+
+/* ---------- Form ---------- */
+.book-form { display: grid; gap: 26px; }
+.book-field { display: grid; gap: 10px; }
+.book-field label { font-size: 0.9375rem; font-weight: 500; }
+.book-field input, .book-field textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--char);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(46, 45, 41, 0.3);
+  padding: 10px 2px;
+  border-radius: 0;
+  transition: border-color .3s ease;
+}
+.book-field textarea { resize: vertical; }
+.book-field input:focus, .book-field textarea:focus { outline: none; border-bottom-color: var(--terra); }
+
+.book__assurance {
+  margin-top: 24px;
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: var(--stone);
+  line-height: 1.9;
+  text-align: center;
+}
+
+/* ---------- Footer ---------- */
+.book-footer {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 32px 24px clamp(32px, 5vh, 48px);
+  font-size: 0.8125rem;
+  color: var(--stone);
+}
+.book-footer a { color: var(--olive); }
+.book-footer a:hover { color: var(--terra); }

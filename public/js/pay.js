@@ -6,7 +6,7 @@
    ============================================================ */
 
 const PAY_CONFIG = {
-  publishableKey: "",              // ⚠️ مفتاح Moyasar العلني (pk_test_... للتجربة ثم pk_live_...)
+  publishableKey: "pk_live_tgJRMBK3YQPNGa9YvNRwT5fKsuPRw5ELLrfUvwYd", // مفتاح Moyasar العلني (آمن في الواجهة)
   currency: "SAR",
   minAmount: 100,                  // أدنى مبلغ مقبول بالريال
   maxAmount: 500000,               // أعلى مبلغ مقبول بالريال
@@ -89,7 +89,9 @@ function init() {
       description: `RAWQ ${type === "deposit" ? "deposit" : "project"}${ref ? " | " + ref : ""}`,
       publishable_api_key: PAY_CONFIG.publishableKey,
       callback_url: cb.toString(),
-      methods: ["creditcard"],
+      // creditcard يشمل مدى وVisa/MasterCard؛ applepay يظهر على Safari/iPhone تلقائيًا.
+      // ملاحظة: Apple Pay على الصفحة المخصّصة يتطلب تسجيل نطاق rawq.art في Moyasar → Apple Pay Domains.
+      methods: ["creditcard", "applepay"],
       metadata: { ref: ref, type: type },
     });
   };
